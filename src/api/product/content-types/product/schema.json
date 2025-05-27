@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "Classic shirt"
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "default": "this is decription"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "integer",
+      "max": 100,
+      "min": 0,
+      "default": 30
+    },
+    "count": {
+      "type": "biginteger",
+      "required": true,
+      "default": "1",
+      "min": "0"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "product"
+    },
+    "child_lasts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::child-last.child-last",
+      "mappedBy": "product"
+    }
+  }
+}

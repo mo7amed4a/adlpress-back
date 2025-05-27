@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "child_ones",
+  "info": {
+    "singularName": "child-one",
+    "pluralName": "child-ones",
+    "displayName": "child_one",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "default": "clothes",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "category_section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category-section.category-section",
+      "inversedBy": "child_ones"
+    },
+    "child_lasts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::child-last.child-last",
+      "mappedBy": "child_one"
+    }
+  }
+}

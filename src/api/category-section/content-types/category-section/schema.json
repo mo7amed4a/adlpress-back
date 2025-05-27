@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_sections",
+  "info": {
+    "singularName": "category-section",
+    "pluralName": "category-sections",
+    "displayName": "category_section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "mens"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "child_ones": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::child-one.child-one",
+      "mappedBy": "category_section"
+    }
+  }
+}
