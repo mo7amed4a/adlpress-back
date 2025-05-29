@@ -369,12 +369,45 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCartCart extends Struct.CollectionTypeSchema {
+  collectionName: 'carts';
+  info: {
+    description: '';
+    displayName: 'cart';
+    pluralName: 'carts';
+    singularName: 'cart';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cart.cart'> &
+      Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-o-fcart.product-o-fcart'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiCategorySectionCategorySection
   extends Struct.CollectionTypeSchema {
   collectionName: 'category_sections';
   info: {
     description: '';
-    displayName: 'category_section';
+    displayName: '\u0627\u0644\u0627\u0642\u0633\u0627\u0645';
     pluralName: 'category-sections';
     singularName: 'category-section';
   };
@@ -410,7 +443,8 @@ export interface ApiCategorySectionCategorySection
 export interface ApiChildLastChildLast extends Struct.CollectionTypeSchema {
   collectionName: 'child_lasts';
   info: {
-    displayName: 'child_last';
+    description: '';
+    displayName: '\u0627\u0644\u0641\u0626\u0627\u062A';
     pluralName: 'child-lasts';
     singularName: 'child-last';
   };
@@ -425,7 +459,7 @@ export interface ApiChildLastChildLast extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files', true> &
+    image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -436,7 +470,7 @@ export interface ApiChildLastChildLast extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'T-shirt'>;
-    product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -448,7 +482,7 @@ export interface ApiChildOneChildOne extends Struct.CollectionTypeSchema {
   collectionName: 'child_ones';
   info: {
     description: '';
-    displayName: 'child_one';
+    displayName: '\u0627\u0644\u0627\u0646\u0648\u0627\u0639';
     pluralName: 'child-ones';
     singularName: 'child-one';
   };
@@ -485,11 +519,75 @@ export interface ApiChildOneChildOne extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
+  collectionName: 'home_pages';
+  info: {
+    displayName: 'Home Page';
+    pluralName: 'home-pages';
+    singularName: 'home-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.Component<'home.alaqsam-fy-alryysyt', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProductOFcartProductOFcart
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'product_o_fcarts';
+  info: {
+    description: '';
+    displayName: 'productOFcart';
+    pluralName: 'product-o-fcarts';
+    singularName: 'product-o-fcart';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cart: Schema.Attribute.Relation<'manyToOne', 'api::cart.cart'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-o-fcart.product-o-fcart'
+    > &
+      Schema.Attribute.Private;
+    product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    quantity: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
     description: '';
-    displayName: 'product';
+    displayName: '\u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A';
     pluralName: 'products';
     singularName: 'product';
   };
@@ -498,7 +596,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
   attributes: {
     child_lasts: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::child-last.child-last'
     >;
     count: Schema.Attribute.BigInteger &
@@ -525,6 +623,9 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
         number
       > &
       Schema.Attribute.DefaultTo<30>;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    images: Schema.Attribute.Media<'images' | 'files', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -535,8 +636,13 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Classic shirt'>;
     price: Schema.Attribute.Decimal;
+    productcarts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-o-fcart.product-o-fcart'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
+    section: Schema.Attribute.Relation<'manyToOne', 'api::setion.setion'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -582,6 +688,37 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiSetionSetion extends Struct.CollectionTypeSchema {
+  collectionName: 'setions';
+  info: {
+    displayName: '\u0627\u0644\u0627\u0642\u0633\u0627\u0645 \u0641\u064A \u0627\u0644\u0631\u0626\u064A\u0633\u064A\u0629';
+    pluralName: 'setions';
+    singularName: 'setion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::setion.setion'
+    > &
+      Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Today\u2019s Deals'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1044,6 +1181,7 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    cart: Schema.Attribute.Relation<'oneToOne', 'api::cart.cart'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -1065,6 +1203,10 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    product_of_carts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-o-fcart.product-o-fcart'
+    >;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1095,11 +1237,15 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::cart.cart': ApiCartCart;
       'api::category-section.category-section': ApiCategorySectionCategorySection;
       'api::child-last.child-last': ApiChildLastChildLast;
       'api::child-one.child-one': ApiChildOneChildOne;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::product-o-fcart.product-o-fcart': ApiProductOFcartProductOFcart;
       'api::product.product': ApiProductProduct;
       'api::review.review': ApiReviewReview;
+      'api::setion.setion': ApiSetionSetion;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

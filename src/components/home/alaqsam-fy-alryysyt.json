@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_home_alaqsam_fy_alryysyt",
+  "info": {
+    "displayName": "الاقسام في الرئيسية",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Top Ranking"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  }
+}

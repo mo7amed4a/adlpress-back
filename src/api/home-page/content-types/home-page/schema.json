@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sections": {
+      "displayName": "الاقسام في الرئيسية",
+      "type": "component",
+      "repeatable": true,
+      "component": "home.alaqsam-fy-alryysyt"
+    }
+  }
+}

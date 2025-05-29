@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "setions",
+  "info": {
+    "singularName": "setion",
+    "pluralName": "setions",
+    "displayName": "الاقسام في الرئيسية"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Today’s Deals"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "section"
+    }
+  }
+}

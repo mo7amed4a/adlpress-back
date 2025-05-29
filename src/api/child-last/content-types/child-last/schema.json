@@ -4,7 +4,8 @@
   "info": {
     "singularName": "child-last",
     "pluralName": "child-lasts",
-    "displayName": "child_last"
+    "displayName": "الفئات",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,13 +18,13 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
-      ],
-      "type": "media",
-      "multiple": true,
-      "required": true
+      ]
     },
     "child_one": {
       "type": "relation",
@@ -31,9 +32,9 @@
       "target": "api::child-one.child-one",
       "inversedBy": "child_lasts"
     },
-    "product": {
+    "products": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::product.product",
       "inversedBy": "child_lasts"
     }
