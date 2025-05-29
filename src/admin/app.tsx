@@ -12,14 +12,14 @@ export default {
     head: {
       logo,
       favicon: favicon,
-      title: "Hive Buzz",
+      title: "Adlpress",
     },
     menu: {
       logo,
     },
     translations: {
       en: {
-        "app.components.HomePage.welcome.again": "Hive Buzz",
+        "app.components.HomePage.welcome.again": "Adlpress",
         "app.components.HomePage.welcomeBlock.content.again":
           "Transforming Ideas into Digital Solutions",
         "app.components.HomePage.button.blog": "Visit Blog",
@@ -37,7 +37,7 @@ export default {
 
         "app.components.LeftMenu.navbrand.workplace": "Testing",
 
-        "Auth.form.welcome.title": "Hive Buzz",
+        "Auth.form.welcome.title": "Adlpress",
 
         "Auth.form.welcome.subtitle": "Login to your account",
 
@@ -55,7 +55,7 @@ export default {
     notifications: { releases: false },
   },
   register(app: StrapiApp) {
-    document.title = "Hive Buzz";
+    document.title = "Adlpress";
     
     const indexRoute = app.router.routes.find(({ index }) => index);
 
